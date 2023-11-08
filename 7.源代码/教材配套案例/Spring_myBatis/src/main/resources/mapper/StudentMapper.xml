@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定一个对应的dao接口/mapper接口-->
+<mapper namespace="com.itheima.dao.StudentDao">
+    <!--select查询所有学生信息-->
+    <select id="selectStudent" resultType="Student">
+      select * from student;
+   </select>
+    <!--根据id查询单个学生信息-->
+    <select id="findStudentById" resultType="Student"
+            parameterType="java.lang.Integer">
+      select * from student where id = #{id};
+   </select>
+    <!--添加学生信息-->
+    <select id="addStudent" resultType="int">
+	       insert into student(username,password,course)
+	       value(#{username},#{password},#{course});
+	    </select>
+    <!--修改学生信息-->
+    <select id="updateStudent" resultType="int">
+	    update student set
+	             username=#{username},password=#{password},course=#{course}
+	             where id = #{id};
+	  </select>
+    <!--根据id删除学生信息-->
+    <select id="deleteStudent" resultType="int">
+	       delete from student where id = #{id};
+	    </select>
+</mapper>
